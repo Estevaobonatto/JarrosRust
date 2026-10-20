@@ -17,43 +17,6 @@ A entrega foi implementada em **Rust**, com duas formas de uso:
 > 2. em `src/web/index.html`, no trecho marcado com o comentário
 >    `<!-- SUBSTITUA pelos nomes dos integrantes do grupo (veja o README.md) -->`.
 
----
-
-## Integrantes
-
-- **[Integrante 1]** — _(substitua pelo nome completo)_
-- **[Integrante 2]** — _(substitua pelo nome completo)_
-
----
-
-## Demonstração
-
-Interface principal com a árvore de busca e o caminho da solução em destaque:
-
-![Interface principal](screenshots/interface.png)
-
-Modo **Exploração**: a árvore cresce na ordem em que a busca expande os nós (os nós ainda
-não gerados ficam ocultos, os da borda aparecem tracejados):
-
-![Modo exploração](screenshots/modo-exploracao.png)
-
-Comparação com **DFS** (a mesma meta, com pilha em vez de fila):
-
-![Modo DFS](screenshots/dfs.png)
-
-Tratamento de meta impossível (antes mesmo de buscar):
-
-![Meta impossível](screenshots/erro-meta-impossivel.png)
-
-Versão responsiva (celular):
-
-![Versão mobile](screenshots/mobile.png)
-
-Visão da página inteira (configuração, estação e árvore):
-[`screenshots/visao-geral.png`](screenshots/visao-geral.png).
-
----
-
 ## Como executar
 
 ### Requisitos
