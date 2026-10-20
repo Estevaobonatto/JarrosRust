@@ -1,0 +1,8 @@
+[package]
+name = "jarros"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+description = "Problema dos Jarros: busca em espaço de estados (BFS/DFS) com interface web local"
+
+[dependencies]
