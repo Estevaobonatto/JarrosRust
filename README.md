@@ -11,12 +11,6 @@ A entrega foi implementada em **Rust**, com duas formas de uso:
 - **Modo terminal**: imprime a ordem de expansão, o caminho e as estatísticas, no formato
   clássico do relatório.
 
-> **Antes de entregar:** preencha os nomes dos integrantes em **dois lugares**:
->
-> 1. aqui, na seção [Integrantes](#integrantes);
-> 2. em `src/web/index.html`, no trecho marcado com o comentário
->    `<!-- SUBSTITUA pelos nomes dos integrantes do grupo (veja o README.md) -->`.
-
 ## Como executar
 
 ### Requisitos
@@ -47,6 +41,62 @@ cargo run --release -- --port 9000      # usa outra porta
 
 > **Sem Rust instalado?** No Windows, execute o `jarros.exe` que acompanha a entrega.
 > Ele contém a interface embutida e abre exatamente igual.
+
+### Linux
+
+O `jarros.exe` incluído é **somente para Windows**. No Linux, o projeto compila normalmente
+com o Rust do sistema e gera um binário Linux equivalente.
+
+```bash
+# 1) instalar o Rust (se ainda não tiver) — sem precisar de sudo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env"
+cargo --version
+
+# 2) entrar na pasta do projeto e executar
+cd "Entrega Rust"
+cargo run --release
+```
+
+Na primeira execução o Cargo compila tudo (não há dependências externas) e sobe a
+interface em `http://127.0.0.1:8080`; se o navegador não abrir, acesse a URL mostrada no
+terminal. `Ctrl+C` encerra o servidor.
+
+Se a compilação falhar por falta de linker (`cc: not found`), instale as ferramentas de
+compilação da sua distro:
+
+```bash
+# Debian/Ubuntu
+sudo apt install build-essential
+# Fedora
+sudo dnf group install "Development Tools"
+# Arch
+sudo pacman -S base-devel
+```
+
+Para gerar o executável Linux e rodar sem o Cargo:
+
+```bash
+cargo build --release
+./target/release/jarros
+```
+
+Em um servidor **sem interface gráfica**, use `--no-open`; para acessar de outra máquina,
+faça um túnel SSH (o servidor escuta só em `127.0.0.1`):
+
+```bash
+cargo run --release -- --no-open --port 8080
+# em outra máquina: ssh -L 8080:127.0.0.1:8080 usuario@servidor
+# depois abra http://127.0.0.1:8080 no navegador local
+```
+
+O modo terminal também funciona igual:
+
+```bash
+cargo run --release -- --cli
+cargo run --release -- --cli --cap-a 4 --cap-b 5 --meta 3
+```
+
 
 ### Modo terminal
 
@@ -288,7 +338,6 @@ ESTATÍSTICAS
 
 ## Checklist antes de enviar
 
-- [ ] Substituir os nomes dos integrantes no README e em `src/web/index.html`;
 - [ ] Rodar `cargo test` e conferir os 9 testes passando;
 - [ ] Rodar `cargo run --release` e navegar pela interface;
 - [ ] (Opcional) Compactar a pasta `Entrega Rust` em um `.zip` para entregar.
